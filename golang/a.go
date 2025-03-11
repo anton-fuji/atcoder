@@ -3,12 +3,15 @@ package main
 import "fmt"
 
 func main() {
-	var S int
-	fmt.Scan(&S)
+	var a, b int
+	fmt.Scan(&a, &b)
 
-	hours := S / 3600
-	minutes := (S % 3600) / 60
-	seconds := S % 60
-
-	fmt.Printf("%d:%d:%d\n", hours, minutes, seconds)
+	switch {
+	case a < b:
+		fmt.Println("a < b")
+	case a > b:
+		fmt.Println("a > b")
+	case a == b:
+		fmt.Println("a == b")
+	}
 }
