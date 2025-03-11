@@ -1,0 +1,29 @@
+# 📘 Algorithm - Math
+
+## **標準で使用できる Math Libraries**
+### **1. `math.Max()` & `math.Min()`**
+- `math.Max(a, b)` → 2 つの値の最大値
+- `math.Min(a, b)` → 2 つの値の最小値
+
+### **2. `math.Abs()` (絶対値)**
+- `math.Abs(x)` → `x` の絶対値を返す
+
+### **3. `math.Pow()` (べき乗)**
+- `math.Pow(x, y)` → `x^y` (x の y 乗) を計算
+
+### **4. `math.Sqrt()` (平方根)**
+- `math.Sqrt(x)` → `x` の平方根を求める
+
+### **5. `math.Ceil()` & `math.Floor()` (切り上げ・切り捨て)**
+- `math.Ceil(x)` → `x` を**切り上げ**
+- `math.Floor(x)` → `x` を**切り捨て**
+
+### **6. `math.Round()` (四捨五入)**
+- `math.Round(x)` → `x` を四捨五入
+
+### **7. `math.Gcd()` (最大公約数) [Go 1.21~]**
+- `math.Gcd(a, b)` → `a` と `b` の最大公約数を求める (Go 1.21 以降)
+
+### **8. `math.Lcm()` (最小公倍数) [手動実装]**
+- `a * b / math.Gcd(a, b)` → `a` と `b` の最小公倍数を求める
+
