@@ -1,17 +1,14 @@
 package main
 
-import (
-	"fmt"
-	"sort"
-)
+import "fmt"
 
 func main() {
-	var a, b, c int
-	fmt.Scan(&a, &b, &c)
+	var W, H, x, y, r int
+	fmt.Scan(&W, &H, &x, &y, &r)
 
-	nums := []int{a, b, c}
-
-	sort.Ints(nums)
-
-	fmt.Println(nums[0], nums[1], nums[2])
+	if x-r >= 0 && y-r >= 0 && x+r <= W && y+r <= H {
+		fmt.Println("Yes")
+	} else {
+		fmt.Println("No")
+	}
 }
