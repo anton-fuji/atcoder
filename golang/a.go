@@ -1,14 +1,18 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
-	var W, H, x, y, r int
-	fmt.Scan(&W, &H, &x, &y, &r)
+	var x int
 
-	if x-r >= 0 && y-r >= 0 && x+r <= W && y+r <= H {
-		fmt.Println("Yes")
-	} else {
-		fmt.Println("No")
+	// 無限ループ
+	for i := 1; ; i++ {
+		fmt.Scan(&x)
+		if x == 0 {
+			break
+		}
+		fmt.Printf("Case %d: %d\n", i, x)
 	}
 }
