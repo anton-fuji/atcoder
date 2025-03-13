@@ -1,18 +1,14 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
 func main() {
-	var x int
+	var a, b int
+	fmt.Scan(&a, &b)
 
-	// 無限ループ
-	for i := 1; ; i++ {
-		fmt.Scan(&x)
-		if x == 0 {
-			break
-		}
-		fmt.Printf("Case %d: %d\n", i, x)
-	}
+	d := a / b
+	r := a % b
+	f := float64(a) / float64(b)
+
+	fmt.Printf("%d %d %.5f\n", d, r, f)
 }
