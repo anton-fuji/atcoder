@@ -2,28 +2,21 @@ package main
 
 import (
 	"fmt"
-	"math"
+	"strings"
 )
 
 func main() {
-	var n int
-	fmt.Scan(&n)
+	for {
+		var H, W int
+		fmt.Scan(&H, &W)
 
-	minNum := math.MaxInt64
-	maxNum := math.MinInt64
-	sum := 0
-
-	for i := 0; i < n; i++ {
-		var num int
-		fmt.Scan(&num)
-
-		if num < minNum {
-			minNum = num
+		if H == 0 && W == 0 {
+			break
 		}
-		if num > maxNum {
-			maxNum = num
+
+		for i := 0; i < H; i++ {
+			fmt.Println(strings.Repeat("#", W))
 		}
-		sum += num
+		fmt.Println()
 	}
-	fmt.Printf("%d %d %d\n", minNum, maxNum, sum)
 }
