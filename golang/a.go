@@ -4,28 +4,32 @@ import (
 	"fmt"
 )
 
-func sorting(arr []int) {
-	n := len(arr)
-	for i := 0; i < n; i++ {
-		for j := 0; j < n-i-1; j++ {
-			if arr[j] > arr[j+1] {
-				arr[j], arr[j+1] = arr[j+1], arr[j]
-			}
-		}
+func judge(a, b string) int {
+	if a == b {
+		return 0
 	}
+
+	if (a == "G" && b == "C") ||
+		(a == "C" && b == "P") ||
+		(a == "P" && b == "G") {
+		return 1
+	}
+	return 2
 }
 
 func main() {
 	var n int
 	fmt.Scan(&n)
 
-	num := make([]int, n)
+	count := 0
 	for i := 0; i < n; i++ {
-		fmt.Scan(&num[i])
-	}
-	sorting(num)
+		var a, b string
+		fmt.Scan(&a, &b)
 
-	for _, v := range num {
-		fmt.Print(v, " ")
+		result := judge(a, b)
+		if result == 1 {
+			count += 1
+		}
 	}
+	fmt.Println(count)
 }
