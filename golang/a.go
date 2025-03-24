@@ -4,30 +4,23 @@ import "fmt"
 
 func main() {
 	for {
-		var m, f, r int
-		fmt.Scan(&m, &f, &r)
+		var n, x int
+		fmt.Scan(&n, &x)
 
-		if m == -1 && f == -1 && r == -1 {
+		if n == 0 && x == 0 {
 			break
 		}
 
-		switch {
-		case m == -1 || f == -1:
-			fmt.Println("F")
-		case m+f >= 80:
-			fmt.Println("A")
-		case 65 <= m+f:
-			fmt.Println("B")
-		case 50 <= m+f:
-			fmt.Println("C")
-		case 30 <= m+f:
-			if r >= 50 {
-				fmt.Println("C")
-			} else {
-				fmt.Println("D")
+		count := 0
+		for i := 1; i <= n-2; i++ {
+			for j := i + 1; j <= n-1; j++ {
+				for k := j + 1; k <= n; k++ {
+					if i+j+k == x {
+						count += 1
+					}
+				}
 			}
-		default:
-			fmt.Println("F")
 		}
+		fmt.Println(count)
 	}
 }
