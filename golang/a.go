@@ -1,26 +1,42 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
-	for {
-		var n, x int
-		fmt.Scan(&n, &x)
+	var r, c int
+	fmt.Scan(&r, &c)
 
-		if n == 0 && x == 0 {
-			break
+	// 配列の初期化
+	table := make([][]int, r)
+	for i := 0; i < r; i++ {
+		table[i] = make([]int, c)
+		for j := 0; j < c; j++ {
+			fmt.Scan(&table[i][j])
 		}
-
-		count := 0
-		for i := 1; i <= n-2; i++ {
-			for j := i + 1; j <= n-1; j++ {
-				for k := j + 1; k <= n; k++ {
-					if i+j+k == x {
-						count += 1
-					}
-				}
-			}
-		}
-		fmt.Println(count)
 	}
+
+	// 列ごとの合計用
+	colSums := make([]int, c)
+	totalSum := 0
+
+	// 行ごとの出力と合計
+	for i := 0; i < r; i++ {
+		rowSum := 0
+		for j := 0; j < c; j++ {
+			val := table[i][j]
+			fmt.Printf("%d ", val)
+			rowSum += val
+			colSums[j] += val
+			totalSum += val
+		}
+		fmt.Println(rowSum)
+	}
+
+	// 最後の行（列ごとの合計 + 全体合計）
+	for j := 0; j < c; j++ {
+		fmt.Printf("%d ", colSums[j])
+	}
+	fmt.Println(totalSum)
 }
