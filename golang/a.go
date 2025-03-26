@@ -5,38 +5,45 @@ import (
 )
 
 func main() {
-	var r, c int
-	fmt.Scan(&r, &c)
+	var n, m, l int
+	fmt.Scan(&n, &m, &l)
 
-	// 配列の初期化
-	table := make([][]int, r)
-	for i := 0; i < r; i++ {
-		table[i] = make([]int, c)
-		for j := 0; j < c; j++ {
-			fmt.Scan(&table[i][j])
+	A := make([][]int, n)
+	for i := range A {
+		A[i] = make([]int, m)
+		for j := 0; j < m; j++ {
+			fmt.Scan(&A[i][j])
 		}
 	}
 
-	// 列ごとの合計用
-	colSums := make([]int, c)
-	totalSum := 0
-
-	// 行ごとの出力と合計
-	for i := 0; i < r; i++ {
-		rowSum := 0
-		for j := 0; j < c; j++ {
-			val := table[i][j]
-			fmt.Printf("%d ", val)
-			rowSum += val
-			colSums[j] += val
-			totalSum += val
+	B := make([][]int, m)
+	for i := range B {
+		B[i] = make([]int, l)
+		for j := 0; j < l; j++ {
+			fmt.Scan(&B[i][j])
 		}
-		fmt.Println(rowSum)
 	}
 
-	// 最後の行（列ごとの合計 + 全体合計）
-	for j := 0; j < c; j++ {
-		fmt.Printf("%d ", colSums[j])
+	C := make([][]int, n)
+	for i := range C {
+		C[i] = make([]int, l)
 	}
-	fmt.Println(totalSum)
+
+	for i := 0; i < n; i++ {
+		for j := 0; j < l; j++ {
+			for k := 0; k < m; k++ {
+				C[i][j] += A[i][k] * B[k][j]
+			}
+		}
+	}
+
+	for i := 0; i < n; i++ {
+		for j := 0; j < l; j++ {
+			if j > 0 {
+				fmt.Print(" ")
+			}
+			fmt.Print(C[i][j])
+		}
+		fmt.Println()
+	}
 }
