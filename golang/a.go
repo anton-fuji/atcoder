@@ -1,14 +1,29 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 func main() {
-	var a, b int
-	fmt.Scan(&a, &b)
+	var n int
+	fmt.Scan(&n)
 
-	d := a / b
-	r := a % b
-	f := float64(a) / float64(b)
+	maxNum := math.MinInt64
+	minNum := math.MaxInt64
+	sum := 0
 
-	fmt.Printf("%d %d %.5f\n", d, r, f)
+	for i := 0; i < n; i++ {
+		var num int
+		fmt.Scan(&num)
+
+		if num > maxNum {
+			maxNum = num
+		}
+		if num < minNum {
+			minNum = num
+		}
+		sum += num
+	}
+	fmt.Println(minNum, maxNum, sum)
 }
