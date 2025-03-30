@@ -10,6 +10,7 @@
 
 - [`bufio`](https://pkg.go.dev/bufio)  
   バッファ付き高速入力。`os.Stdin`と組み合わせて使う。
+  - Goの `bufio.Scanner(os.Stdin)`は、**EOF（Ctrl+D）**を押さないと終了しません
 
 - [`os`](https://pkg.go.dev/os)  
   入力元（`os.Stdin`）やファイル処理で使用。
