@@ -1,29 +1,21 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
-	"math"
+	"os"
+	"unicode"
 )
 
 func main() {
-	var n int
-	fmt.Scan(&n)
+	reader := bufio.NewReader(os.Stdin)
+	input, _ := reader.ReadString('\n')
 
-	maxNum := math.MinInt64
-	minNum := math.MaxInt64
-	sum := 0
-
-	for i := 0; i < n; i++ {
-		var num int
-		fmt.Scan(&num)
-
-		if num > maxNum {
-			maxNum = num
+	for _, c := range input {
+		if unicode.IsUpper(c) {
+			fmt.Printf("%c", unicode.ToLower(c))
+		} else {
+			fmt.Printf("%c", unicode.ToUpper(c))
 		}
-		if num < minNum {
-			minNum = num
-		}
-		sum += num
 	}
-	fmt.Println(minNum, maxNum, sum)
 }
