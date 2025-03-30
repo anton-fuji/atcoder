@@ -4,18 +4,22 @@ import (
 	"bufio"
 	"fmt"
 	"os"
-	"unicode"
 )
 
 func main() {
-	reader := bufio.NewReader(os.Stdin)
-	input, _ := reader.ReadString('\n')
+	scanner := bufio.NewScanner(os.Stdin)
 
-	for _, c := range input {
-		if unicode.IsUpper(c) {
-			fmt.Printf("%c", unicode.ToLower(c))
-		} else {
-			fmt.Printf("%c", unicode.ToUpper(c))
+	for scanner.Scan() {
+		line := scanner.Text()
+		if line == "0" {
+			break
 		}
+
+		sum := 0
+		for _, c := range line {
+			sum += int(c - '0')
+		}
+
+		fmt.Println(sum)
 	}
 }
