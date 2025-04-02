@@ -1,29 +1,21 @@
 package main
 
-import (
-	"fmt"
-	"math"
-)
-
-func visit(cnt, a int) int {
-	if a%2 == 1 {
-		return cnt
-	}
-	return visit(cnt+1, a/2)
-}
+import "fmt"
 
 func main() {
-	var n, a, cnt int
-	min := math.MaxInt64
-	fmt.Scan(&n)
+	var a, b, c, x int
+	fmt.Scan(&a, &b, &c, &x)
 
-	for i := 0; i < n; i++ {
-		fmt.Scan(&a)
-
-		cnt = visit(0, a)
-		if cnt < min {
-			min = cnt
+	count := 0
+	for i := 0; i <= a; i++ {
+		for j := 0; j <= b; j++ {
+			for k := 0; k <= c; k++ {
+				total := i*500 + j*100 + k*50
+				if total == x {
+					count++
+				}
+			}
 		}
 	}
-	fmt.Println(min)
+	fmt.Println(count)
 }
