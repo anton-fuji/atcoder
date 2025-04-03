@@ -1,21 +1,13 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 func main() {
-	var a, b, c, x int
-	fmt.Scan(&a, &b, &c, &x)
+	var s string
+	fmt.Scan(&s)
 
-	count := 0
-	for i := 0; i <= a; i++ {
-		for j := 0; j <= b; j++ {
-			for k := 0; k <= c; k++ {
-				total := i*500 + j*100 + k*50
-				if total == x {
-					count++
-				}
-			}
-		}
-	}
-	fmt.Println(count)
+	fmt.Println(strings.Count(s, "1"))
 }
