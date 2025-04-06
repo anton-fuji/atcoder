@@ -1,29 +1,14 @@
 package main
 
-import (
-	"fmt"
-)
-
-func sorted(arr []int) {
-	n := len(arr)
-	for i := 0; i < n-1; i++ {
-		for j := 0; j < n-i-1; j++ {
-			if arr[j] > arr[j+1] {
-				arr[j], arr[j+1] = arr[j+1], arr[j]
-			}
-		}
-	}
-}
+import "fmt"
 
 func main() {
-	var n int
-	fmt.Scan(&n)
+	var a int
+	fmt.Scan(&a)
 
-	arr := make([]int, n)
-	for i := range arr {
-		fmt.Scan(&arr[i])
+	if 400%a == 0 {
+		fmt.Println(400 / a)
+	} else {
+		fmt.Println(-1)
 	}
-
-	sorted(arr)
-	fmt.Println(arr)
 }
