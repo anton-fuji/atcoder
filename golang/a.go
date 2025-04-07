@@ -1,35 +1,27 @@
+// https://atcoder.jp/contests/abc083/tasks/abc083_b
 package main
 
-import (
-	"bufio"
-	"fmt"
-	"os"
-	"strconv"
-)
+import "fmt"
 
-// bufio, os使用パターン
-func main() {
-	sc := bufio.NewScanner(os.Stdin)
-	sc.Split(bufio.ScanWords)
-	sc.Scan()
-	n, _ := strconv.ParseInt(sc.Text(), 10, 64)
-	sc.Scan()
-	m, _ := strconv.ParseInt(sc.Text(), 10, 64)
-
-	x, pow := int64(0), int64(1)
-	limit := int64(1e9)
-
-	for i := int64(0); i <= m; i++ {
-		if x > limit-pow {
-			fmt.Println("inf")
-			return
-		}
-		x += pow
-		if i < m && pow < limit/n {
-			fmt.Println("inf")
-			return
-		}
-		pow *= n
+func digitSum(n int) int {
+	sum := 0
+	for n > 0 {
+		sum += n % 10
+		n /= 10
 	}
-	fmt.Println(x)
+	return sum
+}
+
+func main() {
+	var n, a, b int
+	fmt.Scan(&n, &a, &b)
+
+	ans := 0
+	for i := 0; i < n; i++ {
+		s := digitSum(i)
+		if a <= s && b >= s {
+			ans += i
+		}
+	}
+	fmt.Println(ans)
 }
