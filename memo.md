@@ -11,9 +11,6 @@ func init() {
 	}
 }
 
-## ホットリロード＋他の言語使用
-- entr.sh, run.sh
-- test.sh, submit.sh, submiturl.sh
 
 -------
 
