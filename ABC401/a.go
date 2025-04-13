@@ -1,14 +1,14 @@
-package main
+// package main
 
-import "fmt"
+// import "fmt"
 
-func main() {
-	var s int
-	fmt.Scan(&s)
+// func main() {
+// 	var s int
+// 	fmt.Scan(&s)
 
-	if s >= 200 && s <= 299 {
-		fmt.Println("Success")
-	} else {
-		fmt.Println("Success")
-	}
-}
+// 	if s >= 200 && s <= 299 {
+// 		fmt.Println("Success")
+// 	} else {
+// 		fmt.Println("Success")
+// 	}
+// }
