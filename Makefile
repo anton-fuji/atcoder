@@ -46,10 +46,3 @@ t:
 s:
 	./shell/submit.sh
 
-// URLで提出
-su:
-	./shell/submiturl.sh
-
-// AtCoderへログイン
-login:
-	oj login https://atcoder.jp
