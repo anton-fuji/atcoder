@@ -1,10 +1,3 @@
-// Goを利用する
-go:
-	echo "go" > .mode
-
-// C++を利用する
-cpp:
-	echo "cpp" > .mode
 
 // 実行する
 run:
