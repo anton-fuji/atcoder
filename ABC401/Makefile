@@ -27,13 +27,7 @@ entr:
 d:
 	./shell/download.sh
 
-// URLからダウンロード
-du:
-	./shell/downloadurl.sh
 
-// テスト
-t:
-	./shell/test.sh
 
 // 提出
 s:
