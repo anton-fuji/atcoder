@@ -33,6 +33,5 @@ d:
 s:
 	./shell/submit.sh
 
-# clip-ファイル名 をターゲットとして使う
 clip-%:
-	@cat $* | clip 
+	cat $* | clip 
