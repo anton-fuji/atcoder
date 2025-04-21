@@ -1,37 +1,34 @@
-// https://onlinejudge.u-aizu.ac.jp/problems/ITP1_9_A
+// https://onlinejudge.u-aizu.ac.jp/problems/ITP1_9_B
 package main
 
 import (
 	"bufio"
 	"fmt"
 	"os"
-	"strings"
+	"strconv"
 )
 
 func main() {
-	var w string
-	fmt.Scan(&w)
-
-	w = strings.ToLower(w)
-
-	// 複数入力の場合、'bufio'を使う。1行ずつ読み込む。
 	sc := bufio.NewScanner(os.Stdin)
-	cnt := 0
 
-	for sc.Scan() {
-		line := sc.Text()
-		if line == "END_OF_TEXT" {
+	for {
+		sc.Scan()
+		s := sc.Text()
+		if s == "-" {
 			break
 		}
 
-		wds := strings.Fields(line)
+		sc.Scan()
+		m, _ := strconv.Atoi(sc.Text())
 
-		for _, wd := range wds {
-			if strings.ToLower(wd) == w {
-				cnt++
-			}
+		for i := 0; i < m; i++ {
+			sc.Scan()
+			h, _ := strconv.Atoi(sc.Text())
+
+			// シャッフル処理: 左から h 文字を末尾に移動
+			s = s[h:] + s[:h]
 		}
+		fmt.Println(s)
 	}
 
-	fmt.Println(cnt)
 }
