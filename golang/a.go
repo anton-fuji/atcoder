@@ -1,26 +1,22 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"os"
-	"strconv"
 )
 
 func main() {
-	sc := bufio.NewScanner(os.Stdin)
-	sc.Scan()
-	n, _ := strconv.Atoi(sc.Text())
+	var n int
+	fmt.Scan(&n)
 
-	sc.Scan()
-	s := sc.Text()
-
-	cnt := 0
-	for i := 0; i < n-1; i++ {
-		if s[i] == '#' && s[i+1] == '.' && s[i+2] == '#' {
-			cnt++
-		}
+	res := make([]rune, n)
+	for i := 0; i < n; i++ {
+		res[i] = '-'
 	}
-	fmt.Println(cnt)
-
+	if n%2 == 0 {
+		res[n/2-1] = '='
+		res[n/2] = '='
+	} else {
+		res[n/2] = '='
+	}
+	fmt.Println(string(res))
 }
