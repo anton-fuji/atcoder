@@ -4,19 +4,20 @@ import (
 	"bufio"
 	"fmt"
 	"os"
-	"unicode"
 )
 
 func main() {
 	sc := bufio.NewScanner(os.Stdin)
 	sc.Scan()
-	s := sc.Text()
+	sc.Scan()
+	n := sc.Text()
 
-	result := ""
-	for _, r := range s {
-		if unicode.IsUpper(r) {
-			result += string(r)
+	cnt := 0
+	for _, s := range n {
+		if s == '.' {
+			cnt++
 		}
 	}
-	fmt.Println(result)
+	fmt.Println(cnt)
+
 }
