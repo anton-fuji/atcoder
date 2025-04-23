@@ -5,18 +5,25 @@ import (
 )
 
 func main() {
-	var n int
+	var n string
 	fmt.Scan(&n)
 
-	res := make([]rune, n)
-	for i := 0; i < n; i++ {
-		res[i] = '-'
+	switch {
+	case n == "N":
+		fmt.Println("S")
+	case n == "S":
+		fmt.Println("N")
+	case n == "E":
+		fmt.Println("W")
+	case n == "W":
+		fmt.Println("E")
+	case n == "NE":
+		fmt.Println("SW")
+	case n == "SW":
+		fmt.Println("NE")
+	case n == "SE":
+		fmt.Println("NW")
+	case n == "NW":
+		fmt.Println("SE")
 	}
-	if n%2 == 0 {
-		res[n/2-1] = '='
-		res[n/2] = '='
-	} else {
-		res[n/2] = '='
-	}
-	fmt.Println(string(res))
 }
