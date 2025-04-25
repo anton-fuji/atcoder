@@ -1,29 +1,47 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"os"
 )
 
 func main() {
-	var n string
-	fmt.Scan(&n)
+	var n, m int
+	fmt.Scan(&n, &m)
 
-	switch {
-	case n == "N":
-		fmt.Println("S")
-	case n == "S":
-		fmt.Println("N")
-	case n == "E":
-		fmt.Println("W")
-	case n == "W":
-		fmt.Println("E")
-	case n == "NE":
-		fmt.Println("SW")
-	case n == "SW":
-		fmt.Println("NE")
-	case n == "SE":
-		fmt.Println("NW")
-	case n == "NW":
-		fmt.Println("SE")
+	sc := bufio.NewScanner(os.Stdin)
+	sc.Split(bufio.ScanLines)
+
+	s := make([]string, n)
+	for i := 0; i < n; i++ {
+		sc.Scan()
+		s[i] = sc.Text()
+	}
+
+	t := make([]string, m)
+	for i := 0; i < m; i++ {
+		sc.Scan()
+		t[i] = sc.Text()
+	}
+
+	for a := 0; a <= n-m; a++ {
+		for b := 0; b <= n-m; b++ {
+			match := true
+			for i := 0; i < m; i++ {
+				for j := 0; j < m; j++ {
+					if s[a+i][b+j] != t[i][j] {
+						match = false
+						break
+					}
+				}
+				if !match {
+					break
+				}
+			}
+			if match {
+				fmt.Println(a+1, b+1)
+			}
+		}
 	}
 }
