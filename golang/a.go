@@ -1,47 +1,20 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"os"
 )
 
 func main() {
-	var n, m int
-	fmt.Scan(&n, &m)
+	var n [7]int
 
-	sc := bufio.NewScanner(os.Stdin)
-	sc.Split(bufio.ScanLines)
-
-	s := make([]string, n)
-	for i := 0; i < n; i++ {
-		sc.Scan()
-		s[i] = sc.Text()
+	for i := 0; i < len(n); i++ {
+		fmt.Scan(&n[i])
 	}
 
-	t := make([]string, m)
-	for i := 0; i < m; i++ {
-		sc.Scan()
-		t[i] = sc.Text()
+	freq := make(map[int]int)
+	for _, v := range n {
+		freq[v]++
+		fmt.Println(freq)
 	}
 
-	for a := 0; a <= n-m; a++ {
-		for b := 0; b <= n-m; b++ {
-			match := true
-			for i := 0; i < m; i++ {
-				for j := 0; j < m; j++ {
-					if s[a+i][b+j] != t[i][j] {
-						match = false
-						break
-					}
-				}
-				if !match {
-					break
-				}
-			}
-			if match {
-				fmt.Println(a+1, b+1)
-			}
-		}
-	}
 }
