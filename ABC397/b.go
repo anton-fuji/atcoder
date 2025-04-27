@@ -27,5 +27,4 @@ func main() {
 	}
 	// 追加すべき個数＝理想形の文字列(ans) - 元々の文字列の長さ
 	fmt.Println(ans - n)
-
 }
