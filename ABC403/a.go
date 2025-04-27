@@ -1,18 +1,21 @@
 package main
 
-import (
-	"fmt"
-	"strings"
-)
+import "fmt"
 
 func main() {
-	var t, u string
-	fmt.Scan(&t)
-	fmt.Scan(&u)
+	var n int
+	fmt.Scan(&n)
 
-	var s string
-	if strings.HasPrefix(t, u) {
-		s = t[:len(t)-len(u)]
+	a := make([]int, n)
+	sum := 0
+	for i := 0; i < n; i++ {
+		fmt.Scan(&a[i])
 	}
-	fmt.Println(s)
+
+	for i := 0; i < n; i++ {
+		if i%2 == 0 {
+			sum += a[i]
+		}
+	}
+	fmt.Println(sum)
 }
