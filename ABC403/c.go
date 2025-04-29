@@ -6,19 +6,39 @@ import (
 	"os"
 )
 
-// 1 X Y: ユーザX にコンテストページY の閲覧権限を付与する。
-// 2 X: ユーザ X にすべてのコンテストページの閲覧権限を付与する。
-// 3 X Y: ユーザ X がコンテストページY を閲覧できるかを答える。
-
 func main() {
-	var n, m, q int
-	fmt.Scan(&n, &m, &q)
+	in := bufio.NewReader(os.Stdin)
+	out := bufio.NewWriter(os.Stdout)
+	defer out.Flush()
 
-	sc := bufio.NewScanner(os.Stdin)
+	var n, m, Q int
+	fmt.Fscan(in, &n, &m, &Q)
 
-	for i := 0; i < q; i++ {
-		if sc.Scan() {
+	all := make([]bool, n+1)
+	perm := make([]map[int]bool, n+1)
+	for i := 1; i <= n; i++ {
+		perm[i] = make(map[int]bool)
+	}
 
+	for i := 0; i < Q; i++ {
+		var typ, x, y int
+		fmt.Fscan(in, &typ)
+		switch typ {
+		case 1:
+			fmt.Fscan(in, &x, &y)
+			if !all[x] {
+				perm[x][y] = true
+			}
+		case 2:
+			fmt.Fscan(in, &x)
+			all[x] = true
+		case 3:
+			fmt.Fscan(in, &x, &y)
+			if all[x] || perm[x][y] {
+				fmt.Fprintln(out, "Yes")
+			} else {
+				fmt.Fprintln(out, "No")
+			}
 		}
 	}
 }

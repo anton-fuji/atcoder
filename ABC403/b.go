@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"strings"
 )
 
 func main() {
@@ -10,9 +9,19 @@ func main() {
 	fmt.Scan(&t)
 	fmt.Scan(&u)
 
-	var s string
-	if strings.HasPrefix(t, u) {
-		s = t[:len(t)-len(u)]
+	m, l := len(t), len(u)
+	for i := 0; i <= m-l; i++ {
+		ok := true
+		for j := 0; j < l; j++ {
+			if t[i+j] != '?' && t[i+j] != u[j] {
+				ok = false
+				break
+			}
+		}
+		if ok {
+			fmt.Println("Yes")
+			return
+		}
 	}
-	fmt.Println(s)
+	fmt.Println("No")
 }
