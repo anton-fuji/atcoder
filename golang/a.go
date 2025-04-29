@@ -5,16 +5,31 @@ import (
 )
 
 func main() {
-	var n [7]int
-
-	for i := 0; i < len(n); i++ {
-		fmt.Scan(&n[i])
+	a := make([]int, 7)
+	for i := 0; i < 7; i++ {
+		fmt.Scan(&a[i])
 	}
 
-	freq := make(map[int]int)
-	for _, v := range n {
-		freq[v]++
-		fmt.Println(freq)
+	cnt := make(map[int]int)
+	for _, v := range a {
+		cnt[v]++
+	}
+
+	x := 0
+	y := 0
+	for _, v := range cnt {
+		if v >= 3 {
+			x++
+		}
+		if v >= 2 {
+			y++
+		}
+	}
+
+	if x >= 1 && y >= 2 {
+		fmt.Println("Yes")
+	} else {
+		fmt.Println("No")
 	}
 
 }
