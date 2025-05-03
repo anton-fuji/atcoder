@@ -1,31 +1,20 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
 func main() {
-	var n int
-	fmt.Scan(&n)
+	var s string
+	fmt.Scan(&s)
 
-	loggedIn := false
-	errCnt := 0
+	var pr [26]bool
+	for _, v := range s {
+		pr[v-'a'] = true
+	}
 
-	for i := 0; i < n; i++ {
-		var s string
-		fmt.Scan(&s)
-
-		switch s {
-		case "login":
-			loggedIn = true
-		case "logout":
-			loggedIn = false
-		case "public":
-		case "private":
-			if !loggedIn {
-				errCnt++
-			}
+	for i := 0; i < 26; i++ {
+		if !pr[i] {
+			fmt.Printf("%c\n", 'a'+i)
+			return
 		}
 	}
-	fmt.Println(errCnt)
 }
