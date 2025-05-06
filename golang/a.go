@@ -3,36 +3,21 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"math"
 	"os"
 )
 
+func distance(x1, y1, x2, y2 float64) float64 {
+	dx := x1 - x2
+	dy := y1 - y2
+	return math.Sqrt(dx*dx + dy*dy)
+}
+
 func main() {
 	in := bufio.NewReader(os.Stdin)
+	var x1, y1, x2, y2 float64
+	fmt.Fscan(in, &x1, &y1, &x2, &y2)
 
-	var s string
-	var n int
-	fmt.Fscan(in, &s)
-	fmt.Fscan(in, &n)
-
-	for i := 0; i < n; i++ {
-		var q string
-		var a, b int
-		fmt.Fscan(in, &q, &a, &b)
-
-		switch q {
-		case "print":
-			fmt.Println(s[a : b+1])
-			// 一文字ずつ扱うときは[]rune
-		case "reverse":
-			sub := []rune(s[a : b+1])
-			for i, j := 0, len(sub)-1; i < j; i, j = i+1, j-1 {
-				sub[i], sub[j] = sub[j], sub[i]
-			}
-			s = s[:a] + string(sub) + s[b+1:]
-		case "replace":
-			var p string
-			fmt.Fscan(in, &p)
-			s = s[:a] + p + s[b+1:]
-		}
-	}
+	d := distance(x1, y1, x2, y2)
+	fmt.Printf("%.8f\n", d)
 }
