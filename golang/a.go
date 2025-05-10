@@ -3,28 +3,29 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"math"
 	"os"
 )
 
-func zhou_length(a, b, C float64) float64 {
-	var c float64
-	c = a*a + b*b - 2*a*b*math.Cos(C)
-	return math.Sqrt(c)
-}
-
 func main() {
 	in := bufio.NewReader(os.Stdin)
-	var a, b, C float64
-	fmt.Fscan(in, &a, &b, &C)
+	var n, d int
+	fmt.Fscan(in, &n, &d)
 
-	C = C * math.Pi / 180
+	t := make([]int, n)
+	l := make([]int, n)
 
-	s := a * b * math.Sin(C) / 2
-	h := 2 * s / a
-	l := zhou_length(a, b, C) + a + b
+	for i := 0; i < n; i++ {
+		fmt.Fscan(in, &t[i], &l[i])
+	}
 
-	fmt.Printf("%.8f\n", s)
-	fmt.Printf("%.8f\n", l)
-	fmt.Printf("%.8f\n", h)
+	for k := 1; k <= d; k++ {
+		maxWgt := 0
+		for i := 0; i < n; i++ {
+			wgt := t[i] * (l[i] + k)
+			if wgt > maxWgt {
+				maxWgt = wgt
+			}
+		}
+		fmt.Println(maxWgt)
+	}
 }
