@@ -4,25 +4,24 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"strings"
 )
 
 func main() {
-	in := bufio.NewReader(os.Stdin)
+	var s string
 	var n int
-	fmt.Fscan(in, &n)
 
-	a := make([]int, n)
-	totalSum := 0
+	fmt.Fscan(os.Stdin, &s)
+	fmt.Fscan(os.Stdin, &n)
+	sc := bufio.NewScanner(os.Stdin)
+
 	for i := 0; i < n; i++ {
-		fmt.Fscan(in, &a[i])
-		totalSum += a[i]
+		sc.Scan()
+		t := sc.Text()
+		if strings.Count(t, s) > 0 {
+			fmt.Println("Yes")
+		} else {
+			fmt.Println("No")
+		}
 	}
-
-	sum := 0
-	for i := 0; i < n; i++ {
-		totalSum -= a[i]
-		sum += a[i] * totalSum
-	}
-
-	fmt.Println(sum)
 }
