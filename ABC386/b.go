@@ -20,12 +20,10 @@ func main() {
 	}
 
 	for i := 0; i < n; i++ {
-		// 1文字押す場合
 		if dp[i+1] > dp[i]+1 {
 			dp[i+1] = dp[i] + 1
 		}
 
-		// 00を押す場合
 		if i+1 < n && s[i] == '0' && s[i+1] == '0' {
 			if dp[i+2] > dp[i]+1 {
 				dp[i+2] = dp[i] + 1
