@@ -8,29 +8,45 @@ import (
 
 func main() {
 	in := bufio.NewReader(os.Stdin)
-	var s string
-	fmt.Fscan(in, &s)
-	n := len(s)
+	var n int
+	fmt.Fscan(in, &n)
 
-	const inf = 1 << 30
-	dp := make([]int, n+1)
-	dp[0] = 0
-	for i := 1; i <= n; i++ {
-		dp[i] = inf
+	h := make([]int, n)
+	for i := 0; i < n; i++ {
+		fmt.Fscan(in, &h[i])
 	}
 
+	const inf = 1 << 60
+	dp := make([]int, n)
+	for i := range dp {
+		dp[i] = inf
+	}
+	dp[0] = 0
+
 	for i := 0; i < n; i++ {
-		// 1文字押す場合
-		if dp[i+1] > dp[i]+1 {
-			dp[i+1] = dp[i] + 1
+		if i+1 < n {
+			d := dp[i] + abs(h[i+1]-h[i])
+			if d < dp[i+1] {
+				dp[i+1] = d
+			}
 		}
 
-		// 00を押す場合
-		if i+1 < n && s[i] == '0' && s[i+1] == '0' {
-			if dp[i+2] > dp[i]+1 {
-				dp[i+2] = dp[i] + 1
+		if i+2 < n {
+			d := dp[i] + abs(h[i+2]-h[i])
+			if d < dp[i+2] {
+				dp[i+2] = d
 			}
 		}
 	}
-	fmt.Println(dp[n])
+
+	fmt.Println(dp[n-1])
+
+}
+
+func abs(x int) int {
+	if x < 0 {
+		return -x
+	}
+	return x
+
 }
