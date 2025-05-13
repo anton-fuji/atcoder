@@ -1,4 +1,4 @@
-package main
+pckage main
 
 import (
 	"bufio"
@@ -6,17 +6,21 @@ import (
 	"os"
 )
 
+func abs() {
+  
+}
+
 func main() {
 	in := bufio.NewReader(os.Stdin)
 	var n int
 	fmt.Fscan(in, &n)
 
-	h := make([]int, n)
+  h := make([]int, n)	
 	for i := 0; i < n; i++ {
 		fmt.Fscan(in, &h[i])
 	}
 
-	const inf = 1 << 60
+  
 	dp := make([]int, n)
 	for i := range dp {
 		dp[i] = inf
