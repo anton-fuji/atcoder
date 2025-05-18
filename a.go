@@ -1,34 +1,27 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"math"
-	"os"
+	"strconv"
 )
 
-func main() {
-	in := bufio.NewReader(os.Stdin)
-	var n int
-	fmt.Fscan(in, &n)
+func checkNum(n int) bool {
+	sNum := strconv.Itoa(n)
 
-	if n <= 1 {
-		return
+	cnt := make(map[rune]int)
+	for _, digit := range sNum {
+		cnt[digit]++
 	}
-
-	isPrime := true
-	for i := 2; i <= int(math.Sqrt(float64(n))); i++ {
-		if n%i == 0 {
-			isPrime = false
-			break
-		}
-	}
-
-	if isPrime {
-		fmt.Printf("%d is a prime number", n)
-	} else {
-		fmt.Printf("%d is not a prime number", n)
-	}
-
+	return cnt['1'] == 1 && cnt['2'] == 2 && cnt['3'] == 3
 }
 
+func main() {
+	var n int
+	fmt.Scan(&n)
+
+	if checkNum(n) {
+		fmt.Println("Yes")
+	} else {
+		fmt.Println("No")
+	}
+}
