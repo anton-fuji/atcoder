@@ -5,17 +5,19 @@ import (
 )
 
 func main() {
-	var s string
-	fmt.Scan(&s)
+	var n, m int
+	fmt.Scan(&n, &m)
 
-	length := len(s) + 2
-	for i := 0; i < length; i++ {
-		fmt.Print("+")
+	a := make([]int, n-1)
+	for i := 0; i < n-1; i++ {
+		fmt.Scan(&a[i])
 	}
-	fmt.Println()
-	fmt.Printf("+%s+\n", s)
-	for i := 0; i < length; i++ {
-		fmt.Print("+")
+
+	sum := 0
+	for i := 0; i < n-1; i++ {
+		if m >= a[i] {
+			sum += a[i]
+		}
 	}
-	fmt.Println()
+	fmt.Println(sum)
 }
