@@ -4,21 +4,26 @@ import (
 	"fmt"
 )
 
-func countStrings(s []string) []string {
-	count := map[string]bool{}
-	result := []string{}
+func main() {
+	var n, x int
+	fmt.Scan(&n)
 
-	for _, v := range s {
-		if !count[v] {
-			count[v] = true
-			result = append(result, v)
+	a := make([]int, n)
+	for i := 0; i < n; i++ {
+		fmt.Scan(&a[i])
+	}
+	fmt.Scan(&x)
+
+	var flag bool
+	for i := 0; i < n; i++ {
+		if a[i] == x {
+			flag = true
 		}
 	}
-	return result
-}
 
-func main() {
-	s := []string{"apple", "grape", "banana", "apple"}
-
-	fmt.Println(countStrings(s))
+	if flag {
+		fmt.Println("Yes")
+	} else {
+		fmt.Println("No")
+	}
 }
