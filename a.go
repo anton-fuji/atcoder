@@ -1,29 +1,30 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"os"
 )
 
 func main() {
-	var n, x int
-	fmt.Scan(&n)
+	input := bufio.NewReader(os.Stdin)
+	var n, l, r int
+	var s string
+	fmt.Fscan(input, &n, &l, &r)
+	fmt.Fscan(input, &s)
 
-	a := make([]int, n)
-	for i := 0; i < n; i++ {
-		fmt.Scan(&a[i])
-	}
-	fmt.Scan(&x)
-
-	var flag bool
-	for i := 0; i < n; i++ {
-		if a[i] == x {
-			flag = true
+	judge := true
+	for i := l - 1; i < r; i++ {
+		if s[i] != 'o' {
+			judge = false
+			break
 		}
 	}
 
-	if flag {
+	if judge {
 		fmt.Println("Yes")
 	} else {
 		fmt.Println("No")
 	}
+
 }
