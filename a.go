@@ -8,23 +8,19 @@ import (
 
 func main() {
 	input := bufio.NewReader(os.Stdin)
-	var n, l, r int
-	var s string
-	fmt.Fscan(input, &n, &l, &r)
-	fmt.Fscan(input, &s)
+	var n int
+	var s, t string
+	var cnt int
 
-	judge := true
-	for i := l - 1; i < r; i++ {
-		if s[i] != 'o' {
-			judge = false
-			break
+	fmt.Fscan(input, &n)
+	fmt.Fscan(input, &s, &t)
+
+	runes_S := []rune(s)
+	runes_T := []rune(t)
+	for i := 0; i < n; i++ {
+		if runes_S[i] != runes_T[i] {
+			cnt++
 		}
 	}
-
-	if judge {
-		fmt.Println("Yes")
-	} else {
-		fmt.Println("No")
-	}
-
+	fmt.Println(cnt)
 }
